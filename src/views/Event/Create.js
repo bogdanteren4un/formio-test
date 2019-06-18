@@ -6,20 +6,88 @@ import {push} from 'connected-react-router';
 import Loading from '../../containers/Loading';
 
 const View = class extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getForm();
   }
 
+  state = {
+    fildsetArr: []
+  }
+
+  checkHiddenFields = (fieldSet, num, submission) => {
+    // console.log('OUTPUT ==>: extends -> checkHiddenFields -> submission', submission);
+
+    const submData = Object.entries(submission.data);
+    let field;
+    submData.forEach(item => {
+      // console.log(item)
+      if ((item[0] !== 'firstName' && item[0] !== 'lastName' && item[0] !== 'select' && item[0] !== 'submit') && item[1].length !== 0 ) {
+        console.log('OUTPUT ==>: extends -> checkHiddenFields -> item', item)
+        console.log('OUTPUT ==>: extends -> checkHiddenFields -> fieldSet', fieldSet)
+      }
+    })
+
+    const { components } = this.props.form.form;
+    // console.log('OUTPUT ==>: extends -> checkHiddenFields -> fieldSet', fieldSet, num);
+
+    
+    const sets = fieldSet.components.filter(item => item.type === 'fieldset');
+    if (sets.length !== 0) {
+      ++num;
+      sets.forEach(item => {
+        this.checkHiddenFields(item, num, submission)
+      })
+    }
+    else {
+      return
+    }
+    
+
+    // components.forEach(item => {
+    //   if (item.key.includes('fieldset')) {
+    //     const {components} = item;
+    //     components.forEach(itm => {
+    //       if (itm.hidden === true) {
+    //         console.log(infa)
+    //         console.log(itm)
+    //       }
+    //     })
+    //   }
+    // })
+  }
+
+  onSubmitHandle = (submission) => {
+    const { form: { form }, onSubmit } = this.props;
+
+    if (Object.entries(form).length !== 0) {
+  
+      const fildsetArr = form.components.filter(item => item.type === 'fieldset');
+      // this.checkHiddenFields(submission.data);
+
+      fildsetArr.forEach(item => {
+        this.checkHiddenFields(item, 0, submission);
+      })
+    }
+
+    onSubmit(submission);
+    
+  }
+
+
+
   render() {
     const {
-      submission,
       hideComponents,
       onSubmit,
       errors,
       options,
       form: {form, isActive, url}
     } = this.props;
-    console.log('OUTPUT ==>: extends -> render -> this.props', this.props)
+    // console.log('OUTPUT ==>: extends -> render -> this.props', this.props);
+    // console.log('OUTPUT ==>: extends -> render -> form', form)
+
+
+
 
     if (isActive) {
       return <Loading />;
@@ -31,11 +99,10 @@ const View = class extends Component {
         <Errors errors={errors} />
         <Form
           form={form}
-          submission={submission}
           url={url}
           options={options}
+          onSubmit={this.onSubmitHandle}
           hideComponents={hideComponents}
-          onSubmit={onSubmit}
         />
       </div>
     );
@@ -43,11 +110,15 @@ const View = class extends Component {
 }
 
 const mapStateToProps = (state) => {
+
+  const submission = selectRoot('submission', selectRoot('demographics', state));
+
   return {
-    form: selectRoot('form', selectRoot('event', state)),
+    form: selectRoot('form', selectRoot('demographics', state)),
+    submission: submission.submission,
     errors: [
-      selectError('form', selectRoot('event', state)),
-      selectError('submission', selectRoot('event', state)),
+      selectError('form', selectRoot('demographics', state)),
+      selectError('submission', selectRoot('demographics', state)),
     ],
     options: {
       noAlerts: true
@@ -57,12 +128,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getForm: () => dispatch(getForm('event')),
+    getForm: () => dispatch(getForm('demographics')),
     onSubmit: (submission) => {
-      console.log('OUTPUT ==>: mapDispatchToProps -> submission', submission)
-      dispatch(saveSubmission('event', submission, null, (err, submission) => {
+      dispatch(saveSubmission('demographics', submission, null, (err, submission) => {
         if (!err) {
-          dispatch(resetSubmissions('event'));
+          // dispatch(resetSubmissions('demographics'));
           dispatch(push(`/event`))
         }
       }));
