@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Confirm from '../../../containers/Confirm';
+import Confirm from '../../../components/Confirm';
 import { deleteForm, resetForms, selectError, Errors } from 'react-formio';
 import {push, goBack} from 'connected-react-router';
 

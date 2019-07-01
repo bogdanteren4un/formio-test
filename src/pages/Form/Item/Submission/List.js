@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { push } from 'connected-react-router';
 import { getSubmissions, selectRoot, selectError, SubmissionGrid, Errors } from 'react-formio';
-import Loading from '../../../../containers/Loading';
+import Loading from '../../../../components/Loading';
 
 const List = class extends Component {
   componentWillMount() {

@@ -4,7 +4,7 @@
   "homepage": ".",
   "scripts": {
     "deploy": "now && now alias",
-    "start": "react-scripts start",
+    "start": "react-scripts start --port 3228",
     "now-start": "serve -s ./build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -15,6 +15,7 @@
     "react-scripts": "^2.1.5"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "bootswatch": "^4.3.1",
     "connected-react-router": "4.5.0",

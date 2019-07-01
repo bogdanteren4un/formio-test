@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {PropTypes} from 'prop-types';
-import Hero from '../containers/Hero';
+import Hero from '../components/Hero';
 import { selectRoot } from "react-formio";
 
 const Home = class extends Component {

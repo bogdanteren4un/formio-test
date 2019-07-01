@@ -3,13 +3,14 @@ import { Component } from 'react';
 import { connect } from 'react-redux'
 import {selectRoot, resetSubmissions, saveSubmission, Form, selectError, Errors} from 'react-formio';
 import {push} from 'connected-react-router';
-import Loading from '../../../containers/Loading'
+import Loading from '../../../components/Loading'
 
-const View = class extends Component {
+const Edit = class extends Component {
   render() {
     const {
       hideComponents,
-      onSubmit, options,
+      onSubmit,
+      options,
       errors,
       form: {form, isActive: isFormActive},
       submission: {submission, isActive: isSubActive, url}
@@ -21,7 +22,7 @@ const View = class extends Component {
 
     return (
       <div>
-        <h3>View Event</h3>
+        <h3>Edit Event</h3>
         <Errors errors={errors} />
         <Form
           form={form}
@@ -41,7 +42,7 @@ const mapStateToProps = (state) => {
     form: selectRoot('form', selectRoot('event', state)),
     submission: selectRoot('submission', selectRoot('event', state)),
     options: {
-      readOnly: true,
+      noAlerts: true,
     },
     errors: [
       selectError('submission', selectRoot('event', state)),
@@ -66,4 +67,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(View)
+)(Edit)

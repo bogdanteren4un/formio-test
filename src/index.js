@@ -1,15 +1,16 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'connected-react-router'
-import store, { history } from './store'
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import store, { history } from './store';
 import { initAuth, Formio, Components } from 'react-formio';
-import App from './App'
+import App from './App';
 
-import components from './components';
-import {AppConfig} from './config';
+import components from './checkMatrix';
+import { AppConfig } from './config';
 
-import './styles.scss'
+import './styles.scss';
+console.log('OUTPUT ==>: AppConfig', AppConfig);
 
 Formio.setProjectUrl(AppConfig.projectUrl);
 Formio.setBaseUrl(AppConfig.apiUrl);
@@ -27,4 +28,4 @@ render(
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
-)
+);

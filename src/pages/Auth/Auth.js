@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NavLink from '../../containers/NavLink';
+import NavLink from '../../components/NavLink';
 import Login from './Login';
 import Register from './Register';
 import {Route} from "react-router-dom";
