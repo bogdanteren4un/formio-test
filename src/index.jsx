@@ -9,7 +9,7 @@ import App from './App';
 import components from './checkMatrix';
 import { AppConfig } from './config';
 
-import './styles.scss';
+import './theme/main.scss';
 console.log('OUTPUT ==>: AppConfig', AppConfig);
 
 Formio.setProjectUrl(AppConfig.projectUrl);

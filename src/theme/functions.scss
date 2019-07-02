@@ -1,0 +1,7 @@
+@import './variables.scss';
+
+// px to rem
+@function rem($size) {
+  $remSize: $size / $fontSize;
+  @return #{$remSize}rem;
+}

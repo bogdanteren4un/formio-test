@@ -1,0 +1,51 @@
+@import './animations.scss';
+@import './responsive.scss';
+@import './variables.scss';
+@import './functions.scss';
+@import '~bootswatch/dist/cosmo/_variables.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootswatch/dist/cosmo/_bootswatch.scss';
+@import '~font-awesome/scss/font-awesome';
+@import '~formiojs/dist/formio.full.css';
+$fa-font-path: 'font-awesome/fonts';
+/* @import 'bootswatch/dist/cosmo/_variables.scss';
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootswatch/dist/cosmo/_bootswatch.scss';
+@import 'font-awesome/scss/font-awesome'; */
+* {
+  box-sizing: border-box;
+  outline: none !important;
+  font-family: inherit;
+}
+
+html {
+  font-size: $fontSize;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: $fontFamily;
+}
+
+.logo {
+  height: 1.9em;
+}
+
+.text-blue {
+  color: #127abf;
+}
+
+.text-green {
+  color: #449414;
+}
+
+.hero-image {
+  display: inline;
+}
+
+#main {
+  margin-top: 10px;
+}

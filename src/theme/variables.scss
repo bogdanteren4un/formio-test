@@ -1,3 +1,4 @@
+// colors
 $white: #fff;
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
@@ -30,31 +31,17 @@ $warning: $yellow;
 $danger: $red;
 $light: $gray-100;
 $dark: $gray-800;
-$fa-font-path: '../node_modules/font-awesome/fonts';
+$fa-font-path: '../../node_modules/font-awesome/fonts';
 
-@import '~bootswatch/dist/cosmo/_variables.scss';
-@import '~bootstrap/scss/bootstrap.scss';
-@import '~bootswatch/dist/cosmo/_bootswatch.scss';
-@import '~font-awesome/scss/font-awesome';
-@import '~formiojs/dist/formio.full.css';
+// fonts
+$fontSize: 16px;
+$fontFamily: sans-serif;
 
-.logo {
-  height: 1.9em;
-}
+// Mixins
+@mixin transition {
+  transition: all 0.2s ease-in-out;
 
-.text-blue {
-  color: #127abf;
-}
-
-.text-green {
-  color: #449414;
-}
-
-.hero-image {
-  display: inline;
-  height: 2em;
-}
-
-#main {
-  margin-top: 10px;
+  > * {
+    transition: all 0.2s ease-in-out;
+  }
 }
