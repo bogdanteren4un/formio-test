@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import NavLink from '../../components/NavLink';
-import Login from './Login';
-import Register from './Register';
-import { Route } from 'react-router-dom';
-import { AppConfig } from '../../config';
+import React, { Component } from "react";
+import NavLink from "../../components/NavLink";
+import Login from "./Login";
+import Register from "./Register";
+import { Route } from "react-router-dom";
+import { AppConfig } from "../../config";
 
 const Auth = class extends Component {
   render() {
     const { location } = this.props;
-    return location.pathname === '/auth' ? (
+    return location.pathname === "/auth" ? (
       <div className="row">
-        {AppConfig.projectUrl !== 'https://reactstarter.form.io' ? (
+        {AppConfig.projectUrl !== "https://reactstarter.form.io" ? (
           <div className="col-md-12">
             <div className="alert alert-warning">
               You can register a regular user here. To register an Admin user,
@@ -23,7 +23,7 @@ const Auth = class extends Component {
           <div className="panel panel-default login-container card">
             <div className="panel-heading card-header">Login</div>
             <div className="panel-body card-body">
-              <Login />
+              <Login {...this.props} />
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@ const Auth = class extends Component {
           <div className="panel panel-default register-container card">
             <div className="panel-heading card-header">Register</div>
             <div className="panel-body card-body">
-              <Register />
+              <Register {...this.props} />
             </div>
           </div>
         </div>
@@ -42,10 +42,11 @@ const Auth = class extends Component {
           <div className="panel panel-default card">
             <div
               className="panel-heading card-header"
-              style={{ paddingBottom: 0, borderBottom: 'none' }}>
-              <ul className="nav nav-tabs" style={{ borderBottom: 'none' }}>
-                <NavLink to={'/auth/login'}>Login</NavLink>
-                <NavLink to={'/auth/register'}>Register</NavLink>
+              style={{ paddingBottom: 0, borderBottom: "none" }}
+            >
+              <ul className="nav nav-tabs" style={{ borderBottom: "none" }}>
+                <NavLink to={"/auth/login"}>Login</NavLink>
+                <NavLink to={"/auth/register"}>Register</NavLink>
               </ul>
             </div>
             <div className="panel-body card-body">

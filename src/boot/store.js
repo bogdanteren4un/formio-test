@@ -1,46 +1,22 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { PersistConfig, persistReducer, persistStore } from 'redux-persist';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
-import thunk from 'redux-thunk';
-import storage from 'redux-persist/es/storage';
-import reducer from 'Redux/reducers';
-import api from 'Redux/middlewares/api';
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
 
-// const initialState = {};
-// const enhancers = [];
-// const middleware = [thunk, routerMiddleware(history)];
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/es/storage";
 
-// if (process.env.NODE_ENV === 'development') {
-//   const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
-//   const { logger } = require('redux-logger');
-//   middleware.push(logger);
-
-//   if (typeof devToolsExtension === 'function') {
-//     enhancers.push(devToolsExtension());
-//   }
-// }
-
-// const composedEnhancers = compose(
-//   applyMiddleware(...middleware),
-//   ...enhancers
-// );
-
-// export default createStore(
-//   connectRouter(history)(reducer),
-//   initialState,
-//   composedEnhancers
-// );
+import reducer from "Redux/reducers";
+import api from "Redux/middlewares/api";
 
 const persistConfig = {
-  key: 'root',
-  storage,
+  key: "root",
+  storage
 };
 
 export default function configureStore(onCompletion) {
   const middlewares = [thunk, api];
 
-  if (process.env.NODE_ENV === 'development') {
-    const { logger } = require('redux-logger');
+  if (process.env.NODE_ENV === "development") {
+    const { logger } = require("redux-logger");
     middlewares.push(logger);
   }
 

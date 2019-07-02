@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
-import { Link } from 'react-router-dom';
-import { push } from 'connected-react-router';
-import NavLink from './NavLink';
-import { logout } from 'react-formio';
-import { AuthConfig } from '../config';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { PropTypes } from "prop-types";
+import { Link } from "react-router-dom";
+import NavLink from "./NavLink";
+import { logout } from "react-formio";
+
+import history from "Services/history";
 
 const Header = class extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
-    logout: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired
   };
 
   render() {
@@ -44,7 +44,8 @@ const Header = class extends Component {
                 <span
                   className="nav-link"
                   role="navigation link"
-                  onClick={logout}>
+                  onClick={logout}
+                >
                   <span className="fa fa-sign-out" />
                   &nbsp; Logout
                 </span>
@@ -63,16 +64,16 @@ const Header = class extends Component {
 
 const mapStateToProps = state => {
   return {
-    auth: state.formReducers.auth,
+    auth: state.formReducers.auth
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     logout: () => {
       dispatch(logout());
-      dispatch(push(AuthConfig.anonState));
-    },
+      history.push("/auth");
+    }
   };
 };
 

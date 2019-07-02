@@ -1,16 +1,15 @@
-import React from 'react';
-import { Component } from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { Component } from "react";
+import { connect } from "react-redux";
 import {
   selectRoot,
   saveSubmission,
   Form,
   selectError,
   Errors,
-  getForm,
-} from 'react-formio';
-import { push } from 'connected-react-router';
-import Loading from 'Components/Loading';
+  getForm
+} from "react-formio";
+import Loading from "Components/Loading";
 
 const View = class extends Component {
   componentDidMount() {
@@ -18,13 +17,13 @@ const View = class extends Component {
   }
 
   state = {
-    fildsetArr: [],
+    fildsetArr: []
   };
 
   onSubmitHandle = submission => {
     const {
       form: { form },
-      onSubmit,
+      onSubmit
     } = this.props;
 
     if (Object.entries(form).length !== 0) {
@@ -40,13 +39,13 @@ const View = class extends Component {
       const findFieldsetByKey = (key, root) => {
         try {
           root.components.forEach(component => {
-            if (component.key === key && root.type !== 'form') {
+            if (component.key === key && root.type !== "form") {
               throw root;
             }
           });
 
           root.components.forEach(component => {
-            if (component.type === 'fieldset') {
+            if (component.type === "fieldset") {
               const temp = findFieldsetByKey(key, component);
               if (temp) {
                 throw temp;
@@ -64,12 +63,12 @@ const View = class extends Component {
           fieldset = findFieldsetByKey(key, form);
           if (fieldset) {
             fieldset.components.forEach(component => {
-              if (component.hidden && component.defaultValue !== '') {
+              if (component.hidden && component.defaultValue !== "") {
                 if (!isNaN(Number(component.defaultValue))) {
                   sum += +component.defaultValue;
                 }
               }
-              if (component.type !== 'fieldset') {
+              if (component.type !== "fieldset") {
                 excludes.push(component.key);
               }
             });
@@ -86,7 +85,7 @@ const View = class extends Component {
       hideComponents,
       errors,
       options,
-      form: { form, isActive, url },
+      form: { form, isActive, url }
     } = this.props;
 
     if (isActive) {
@@ -111,36 +110,35 @@ const View = class extends Component {
 
 const mapStateToProps = state => {
   const submission = selectRoot(
-    'submission',
-    selectRoot('demographics', state)
+    "submission",
+    selectRoot("demographics", state)
   );
 
   return {
-    form: selectRoot('form', selectRoot('demographics', state)),
+    form: selectRoot("form", selectRoot("demographics", state)),
     submission: submission.submission,
     errors: [
-      selectError('form', selectRoot('demographics', state)),
-      selectError('submission', selectRoot('demographics', state)),
+      selectError("form", selectRoot("demographics", state)),
+      selectError("submission", selectRoot("demographics", state))
     ],
     options: {
-      noAlerts: true,
-    },
+      noAlerts: true
+    }
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    getForm: () => dispatch(getForm('demographics')),
+    getForm: () => dispatch(getForm("demographics")),
     onSubmit: submission => {
       dispatch(
-        saveSubmission('demographics', submission, null, (err, submission) => {
+        saveSubmission("demographics", submission, null, (err, submission) => {
           if (!err) {
-            // dispatch(resetSubmissions('demographics'));
-            dispatch(push(`/`));
+            ownProps.history.push("/");
           }
         })
       );
-    },
+    }
   };
 };
 

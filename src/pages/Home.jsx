@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
-import Hero from '../components/Hero';
-import { selectRoot } from 'react-formio';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { PropTypes } from "prop-types";
+import Hero from "../components/Hero";
+import { selectRoot } from "react-formio";
 
 const Home = class extends Component {
   static propTypes = {
-    auth: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired
   };
 
   render() {
@@ -33,7 +33,7 @@ const Home = class extends Component {
 
 const mapStateToProps = state => {
   return {
-    auth: selectRoot('auth', selectRoot('formReducers', state)),
+    auth: selectRoot("auth", selectRoot("formReducers", state))
   };
 };
 

@@ -4,13 +4,27 @@
   "homepage": ".",
   "scripts": {
     "deploy": "now && now alias",
-    "start": "node scripts/start.js --inline --progress --port 3000 --open",
+    "start": "node scripts/start.js",
     "now-start": "serve -s ./build",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "precommit": "pretty-quick --staged"
+    "precommit": "NODE_ENV=production lint-staged"
   },
-  "devDependencies": {},
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "pretty-quick --staged",
+      "eslint src/ --fix",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.0.1",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1"
+  },
   "dependencies": {
     "@babel/core": "7.2.2",
     "@svgr/webpack": "4.1.0",
@@ -30,6 +44,7 @@
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
     "eslint": "5.12.0",
+    "eslint-config-airbnb": "^17.1.1",
     "eslint-config-react-app": "^3.0.8",
     "eslint-loader": "2.1.1",
     "eslint-plugin-flowtype": "2.50.1",
