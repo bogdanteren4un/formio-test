@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Header from './components/Header';
-import Home from './pages/Home';
-import Event from './pages/Event';
-import Auth from './pages/Auth/Auth';
+import Header from 'Components/Header';
+import Home from 'Pages/Home';
+import Event from 'Pages/Event';
+import Auth from 'Pages/Auth/Auth';
 
 const App = () => (
   <div>

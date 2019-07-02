@@ -1,12 +1,12 @@
 import Base from 'formiojs/components/base/Base';
-import editForm from 'formiojs/components/table/Table.form'
+import editForm from 'formiojs/components/table/Table.form';
 
-export default class CheckMatrix extends Base {
+class CheckMatrix extends Base {
   static schema() {
     return Base.schema({
       type: 'checkmatrix',
       numRows: 3,
-      numCols: 3
+      numCols: 3,
     });
   }
 
@@ -16,26 +16,28 @@ export default class CheckMatrix extends Base {
     icon: 'fa fa-table',
     weight: 70,
     documentation: 'http://help.form.io/userguide/#table',
-    schema: CheckMatrix.schema()
-  }
+    schema: CheckMatrix.schema(),
+  };
 
-  static editForm = editForm
+  static editForm = editForm;
 
   build() {
     this.element = this.ce('div', {
-      class: 'table-responsive'
+      class: 'table-responsive',
     });
     this.createLabel(this.element);
 
     var tableClass = 'table ';
-    ['striped', 'bordered', 'hover', 'condensed'].forEach(function(prop) {
-      if (this.component[prop]) {
-        tableClass += `table-${prop} `;
-      }
-    }.bind(this));
+    ['striped', 'bordered', 'hover', 'condensed'].forEach(
+      function(prop) {
+        if (this.component[prop]) {
+          tableClass += `table-${prop} `;
+        }
+      }.bind(this)
+    );
 
     var table = this.ce('table', {
-      class: tableClass
+      class: tableClass,
     });
 
     // Build the body.
@@ -48,7 +50,7 @@ export default class CheckMatrix extends Base {
       for (let j = 0; j < this.component.numCols; j++) {
         var td = this.ce('td');
         this.checks[i][j] = this.ce('input', {
-          type: 'checkbox'
+          type: 'checkbox',
         });
         this.addInput(this.checks[i][j], td);
         tr.appendChild(td);
@@ -99,3 +101,7 @@ export default class CheckMatrix extends Base {
     }
   }
 }
+
+export default {
+  checkmatrix: CheckMatrix,
+};

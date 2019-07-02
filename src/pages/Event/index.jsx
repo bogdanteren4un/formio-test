@@ -10,7 +10,7 @@ import {
   getForm,
 } from 'react-formio';
 import { push } from 'connected-react-router';
-import Loading from '../../components/Loading';
+import Loading from 'Components/Loading';
 
 const View = class extends Component {
   componentDidMount() {
