@@ -31,13 +31,6 @@ const Header = class extends Component {
             <NavLink exact to="/" role="navigation button" className="nav-link">
               <span className="fa fa-home" />
             </NavLink>
-            {auth.is.hasOwnProperty('administrator') &&
-            auth.is.administrator ? (
-              <NavLink to="/form" role="navigation link" className="nav-link">
-                <i className="fa fa-wpforms" />
-                &nbsp; Forms
-              </NavLink>
-            ) : null}
             {auth.authenticated ? (
               <NavLink to="/event" role="navigation link" className="nav-link">
                 <i className="fa fa-calendar" />
