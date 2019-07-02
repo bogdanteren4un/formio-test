@@ -1,22 +1,22 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 
-import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/es/storage";
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/es/storage';
 
-import reducer from "Redux/reducers";
-import api from "Redux/middlewares/api";
+import reducer from 'Redux/reducers';
+import api from 'Redux/middlewares/api';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage
 };
 
 export default function configureStore(onCompletion) {
   const middlewares = [thunk, api];
 
-  if (process.env.NODE_ENV === "development") {
-    const { logger } = require("redux-logger");
+  if (process.env.NODE_ENV === 'development') {
+    const { logger } = require('redux-logger');
     middlewares.push(logger);
   }
 

@@ -26,7 +26,7 @@ store.dispatch(initAuth());
 export default class Setup extends React.Component {
   constructor(props) {
     super(props);
-    const { store, persistor } = configureStore(() =>
+    const { persistor } = configureStore(() =>
       this.setState({ isLoading: false })
     );
 
@@ -34,13 +34,13 @@ export default class Setup extends React.Component {
     this.state = {
       isLoading: false,
       persistor,
-      store,
+      store
     };
   }
 
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <PersistGate loading={null} persistor={this.state.persistor}>
           <Router history={history}>
             <Provider store={this.state.store}>

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Form } from "react-formio";
-import { AppConfig, AuthConfig } from "../../config";
-import { setUser } from "react-formio";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Form } from 'react-formio';
+import { AppConfig, AuthConfig } from '../../config';
+import { setUser } from 'react-formio';
 
 const Register = class extends Component {
   render() {
@@ -12,7 +12,7 @@ const Register = class extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    src: AppConfig.projectUrl + "/" + AuthConfig.register.form
+    src: AppConfig.projectUrl + '/' + AuthConfig.register.form
   };
 };
 

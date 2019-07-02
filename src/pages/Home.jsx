@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import Hero from "../components/Hero";
-import { selectRoot } from "react-formio";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import Hero from '../components/Hero';
+import { selectRoot } from 'react-formio';
 
 const Home = class extends Component {
   static propTypes = {
@@ -14,9 +14,9 @@ const Home = class extends Component {
     return (
       <div>
         <Hero />
-        <div className="container">
+        <div className='container'>
           {auth.authenticated ? (
-            <div className="well text-center">
+            <div className='well text-center'>
               {auth.user && auth.user.data ? (
                 <h3>
                   You are logged in as&nbsp;
@@ -33,7 +33,7 @@ const Home = class extends Component {
 
 const mapStateToProps = state => {
   return {
-    auth: selectRoot("auth", selectRoot("formReducers", state))
+    auth: selectRoot('auth', selectRoot('formReducers', state))
   };
 };
 

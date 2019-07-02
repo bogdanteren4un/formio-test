@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Link, withRouter, matchPath } from "react-router-dom";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { Link, withRouter, matchPath } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class NavLink extends Component {
   static propTypes = {
@@ -20,8 +20,8 @@ class NavLink extends Component {
       exact,
       strict: false
     })
-      ? "nav-item active"
-      : "nav-item";
+      ? 'nav-item active'
+      : 'nav-item';
 
     return (
       <li className={liClass}>

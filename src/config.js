@@ -1,13 +1,13 @@
-var PROJECT_URL = "https://bhtugrzkcspdujs.form.io";
-var API_URL = "https://api.form.io";
+var PROJECT_URL = 'https://bhtugrzkcspdujs.form.io';
+var API_URL = 'https://api.form.io';
 
 var query = {};
 window.location.search
   .substr(1)
-  .split("&")
+  .split('&')
   .forEach(function(item) {
-    query[item.split("=")[0]] =
-      item.split("=")[1] && decodeURIComponent(item.split("=")[1]);
+    query[item.split('=')[0]] =
+      item.split('=')[1] && decodeURIComponent(item.split('=')[1]);
   });
 
 PROJECT_URL = query.projectUrl || PROJECT_URL;
@@ -19,12 +19,12 @@ export const AppConfig = {
 };
 
 export const AuthConfig = {
-  anonState: "/auth",
-  authState: "/",
+  anonState: '/auth',
+  authState: '/',
   login: {
-    form: "admin/login"
+    form: 'admin/login'
   },
   register: {
-    form: "user/register"
+    form: 'user/register'
   }
 };

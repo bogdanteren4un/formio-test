@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 // eslint-disable-next-line
-import { Form, setUser, initAuth } from "react-formio";
-import { AppConfig, AuthConfig } from "../../config";
+import { Form, setUser, initAuth } from 'react-formio';
+import { AppConfig, AuthConfig } from '../../config';
 
 const Login = class extends Component {
   componentDidMount = () => {
@@ -16,7 +16,7 @@ const Login = class extends Component {
 
 const mapStateToProps = () => {
   return {
-    src: AppConfig.projectUrl + "/" + AuthConfig.login.form
+    src: AppConfig.projectUrl + '/' + AuthConfig.login.form
   };
 };
 
