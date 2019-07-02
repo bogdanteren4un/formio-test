@@ -29,7 +29,6 @@ const mapDispatchToProps = dispatch => {
       // dispatch(initAuth());
     },
     onSubmitDone: submission => {
-      console.log('OUTPUT ==>: submission', submission);
       // dispatch(initAuth());
       dispatch(push(AuthConfig.authState));
       dispatch(setUser(submission));

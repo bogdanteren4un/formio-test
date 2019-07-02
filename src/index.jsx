@@ -9,10 +9,10 @@ import App from './App';
 import components from './checkMatrix';
 import { AppConfig } from './config';
 
+import { apiUrl } from './utils/formio';
 import './theme/main.scss';
-console.log('OUTPUT ==>: AppConfig', AppConfig);
 
-Formio.setProjectUrl(AppConfig.projectUrl);
+Formio.setProjectUrl(apiUrl);
 Formio.setBaseUrl(AppConfig.apiUrl);
 Components.setComponents(components);
 

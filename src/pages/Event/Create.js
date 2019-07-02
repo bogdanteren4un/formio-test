@@ -29,6 +29,7 @@ const View = class extends Component {
 
     if (Object.entries(form).length !== 0) {
       const excludes = [];
+      // eslint-disable-next-line
       let sum = 0;
       let fieldset;
 
@@ -88,7 +89,6 @@ const View = class extends Component {
       form: { form, isActive, url },
     } = this.props;
 
-    console.log('OUTPUT ==>: extends -> render -> this.props', this.props);
     if (isActive) {
       return <Loading />;
     }
@@ -136,7 +136,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         saveSubmission('demographics', submission, null, (err, submission) => {
           if (!err) {
             // dispatch(resetSubmissions('demographics'));
-            dispatch(push(`/event`));
+            dispatch(push(`/`));
           }
         })
       );
