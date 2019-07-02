@@ -7,8 +7,7 @@
     "start": "node scripts/start.js",
     "now-start": "serve -s ./build",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "precommit": "NODE_ENV=production lint-staged"
+    "test": "node scripts/test.js --env=jsdom"
   },
   "lint-staged": {
     "*.{js,jsx,scss,json}": [
