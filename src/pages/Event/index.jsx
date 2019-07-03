@@ -127,20 +127,18 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    getForm: () => dispatch(getForm('demographics')),
-    onSubmit: submission => {
-      dispatch(
-        saveSubmission('demographics', submission, null, err => {
-          if (!err) {
-            ownProps.history.push('/');
-          }
-        })
-      );
-    }
-  };
-};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  getForm: () => dispatch(getForm('demographics')),
+  onSubmit: submission => {
+    dispatch(
+      saveSubmission('demographics', submission, null, err => {
+        if (!err) {
+          ownProps.history.push('/');
+        }
+      })
+    );
+  }
+});
 
 export default connect(
   mapStateToProps,

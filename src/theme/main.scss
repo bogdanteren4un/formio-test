@@ -2,16 +2,15 @@
 @import './responsive.scss';
 @import './variables.scss';
 @import './functions.scss';
+
 @import '~bootswatch/dist/cosmo/_variables.scss';
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~bootswatch/dist/cosmo/_bootswatch.scss';
 @import '~font-awesome/scss/font-awesome';
 @import '~formiojs/dist/formio.full.css';
+
 $fa-font-path: 'font-awesome/fonts';
-/* @import 'bootswatch/dist/cosmo/_variables.scss';
-@import 'bootstrap/scss/bootstrap.scss';
-@import 'bootswatch/dist/cosmo/_bootswatch.scss';
-@import 'font-awesome/scss/font-awesome'; */
+
 * {
   box-sizing: border-box;
   outline: none !important;

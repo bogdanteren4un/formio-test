@@ -22,7 +22,8 @@
     "husky": "^3.0.0",
     "lint-staged": "^9.0.1",
     "prettier": "^1.18.2",
-    "pretty-quick": "^1.11.1"
+    "pretty-quick": "^1.11.1",
+    "react-svg-loader": "^3.0.3"
   },
   "dependencies": {
     "@babel/core": "7.2.2",
@@ -68,6 +69,7 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.5.0",
     "postcss-safe-parser": "4.0.1",
+    "prop-types": "^15.7.2",
     "react": "16.8.2",
     "react-app-polyfill": "^0.2.2",
     "react-dev-utils": "^8.0.0",

@@ -6,7 +6,7 @@ class CheckMatrix extends Base {
     return Base.schema({
       type: 'checkmatrix',
       numRows: 3,
-      numCols: 3,
+      numCols: 3
     });
   }
 
@@ -16,18 +16,18 @@ class CheckMatrix extends Base {
     icon: 'fa fa-table',
     weight: 70,
     documentation: 'http://help.form.io/userguide/#table',
-    schema: CheckMatrix.schema(),
+    schema: CheckMatrix.schema()
   };
 
   static editForm = editForm;
 
   build() {
     this.element = this.ce('div', {
-      class: 'table-responsive',
+      class: 'table-responsive'
     });
     this.createLabel(this.element);
 
-    var tableClass = 'table ';
+    let tableClass = 'table ';
     ['striped', 'bordered', 'hover', 'condensed'].forEach(
       function(prop) {
         if (this.component[prop]) {
@@ -36,21 +36,21 @@ class CheckMatrix extends Base {
       }.bind(this)
     );
 
-    var table = this.ce('table', {
-      class: tableClass,
+    let table = this.ce('table', {
+      class: tableClass
     });
 
     // Build the body.
-    var tbody = this.ce('tbody');
+    let tbody = this.ce('tbody');
     this.inputs = [];
     this.checks = [];
     for (let i = 0; i < this.component.numRows; i++) {
-      var tr = this.ce('tr');
+      let tr = this.ce('tr');
       this.checks.push([]);
       for (let j = 0; j < this.component.numCols; j++) {
-        var td = this.ce('td');
+        let td = this.ce('td');
         this.checks[i][j] = this.ce('input', {
-          type: 'checkbox',
+          type: 'checkbox'
         });
         this.addInput(this.checks[i][j], td);
         tr.appendChild(td);
@@ -68,12 +68,12 @@ class CheckMatrix extends Base {
   }
 
   getValue() {
-    var value = [];
-    for (var rowIndex in this.checks) {
-      var row = this.checks[rowIndex];
+    let value = [];
+    for (let rowIndex in this.checks) {
+      let row = this.checks[rowIndex];
       value[rowIndex] = [];
-      for (var colIndex in row) {
-        var col = row[colIndex];
+      for (let colIndex in row) {
+        let col = row[colIndex];
         value[rowIndex][colIndex] = !!col.checked;
       }
     }
@@ -84,13 +84,13 @@ class CheckMatrix extends Base {
     if (!value) {
       return;
     }
-    for (var rowIndex in this.checks) {
-      var row = this.checks[rowIndex];
+    for (let rowIndex in this.checks) {
+      let row = this.checks[rowIndex];
       if (!value[rowIndex]) {
         break;
       }
-      for (var colIndex in row) {
-        var col = row[colIndex];
+      for (let colIndex in row) {
+        let col = row[colIndex];
         if (!value[rowIndex][colIndex]) {
           return false;
         }
@@ -103,5 +103,5 @@ class CheckMatrix extends Base {
 }
 
 export default {
-  checkmatrix: CheckMatrix,
+  checkmatrix: CheckMatrix
 };

@@ -10,7 +10,7 @@ import { setStore } from '../services/store';
 
 import { initAuth, Formio, Components } from 'react-formio';
 import components from './checkMatrix';
-import { formioUrls } from '../utils/formio';
+import formioUrls from '../env';
 
 import 'Theme/main.scss';
 
@@ -40,7 +40,7 @@ export default class Setup extends React.Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className="App">
         <PersistGate loading={null} persistor={this.state.persistor}>
           <Router history={history}>
             <Provider store={this.state.store}>

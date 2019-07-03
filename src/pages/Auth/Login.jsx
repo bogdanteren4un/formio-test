@@ -14,23 +14,19 @@ const Login = class extends Component {
   }
 };
 
-const mapStateToProps = () => {
-  return {
-    src: AppConfig.projectUrl + '/' + AuthConfig.login.form
-  };
-};
+const mapStateToProps = () => ({
+  src: AppConfig.projectUrl + '/' + AuthConfig.login.form
+});
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    initAuth: () => {
-      // dispatch(initAuth());
-    },
-    onSubmitDone: submission => {
-      ownProps.history.push(AuthConfig.authState);
-      dispatch(setUser(submission));
-    }
-  };
-};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  initAuth: () => {
+    // dispatch(initAuth());
+  },
+  onSubmitDone: submission => {
+    ownProps.history.push(AuthConfig.authState);
+    dispatch(setUser(submission));
+  }
+});
 
 export default connect(
   mapStateToProps,

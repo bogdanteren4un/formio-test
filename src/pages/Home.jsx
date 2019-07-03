@@ -14,9 +14,9 @@ const Home = class extends Component {
     return (
       <div>
         <Hero />
-        <div className='container'>
+        <div className="container">
           {auth.authenticated ? (
-            <div className='well text-center'>
+            <div className="well text-center">
               {auth.user && auth.user.data ? (
                 <h3>
                   You are logged in as&nbsp;
@@ -31,15 +31,11 @@ const Home = class extends Component {
   }
 };
 
-const mapStateToProps = state => {
-  return {
-    auth: selectRoot('auth', selectRoot('formReducers', state))
-  };
-};
+const mapStateToProps = state => ({
+  auth: selectRoot('auth', selectRoot('formReducers', state))
+});
 
-const mapDispatchToProps = () => {
-  return {};
-};
+const mapDispatchToProps = () => ({});
 
 export default connect(
   mapStateToProps,
