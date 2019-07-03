@@ -7,10 +7,11 @@
     "start": "node scripts/start.js",
     "now-start": "serve -s ./build",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,scss,json}": [
+    "src/**/*.{js,jsx,scss,json}": [
       "pretty-quick --staged",
       "eslint src/ --fix",
       "git add"
